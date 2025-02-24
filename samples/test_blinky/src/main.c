@@ -9,7 +9,9 @@
 #include <zephyr/drivers/gpio.h>
 
 /* Fail for boards without LED support */
-#if DT_HAS_ALIAS(led0)
+#if !DT_HAS_ALIAS(led0)
+#error "Compilation halted, board does not have an LED"
+#else
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   1000
@@ -46,6 +48,4 @@ int main(void)
 	return 0;
 }
 
-#else
-#error "Compilation halted, board does not have an LED"
 #endif
