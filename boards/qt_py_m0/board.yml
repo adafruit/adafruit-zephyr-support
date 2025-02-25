@@ -1,0 +1,6 @@
+board:
+  name: qt_py_m0
+  full_name: Adafruit QT Py M0
+  vendor: adafruit
+  socs:
+    - name: samd21e18a
