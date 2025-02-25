@@ -17,10 +17,12 @@
 #include <sys/_stdint.h>
 #include <zephyr/drivers/gpio.h>
 
-/* add blinky features */
+/* add blinky features, if LED exists */
+#if DT_HAS_ALIAS(led0)
 #define SLEEP_TIME_MS   1000
 #define LED0_NODE DT_ALIAS(led0)
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+#endif
 
 static struct drv2605_rom_data rom_data = {
 	.library = DRV2605_LIBRARY_LRA,
@@ -63,6 +65,7 @@ int main(void)
 
 	/* blinky loop to confirm micro is running, in case of hardware failure */
 
+	#if DT_HAS_ALIAS(led0)
 	bool led_state = true;
 	if (!gpio_is_ready_dt(&led)) {
 		return 0;
@@ -82,4 +85,5 @@ int main(void)
 		k_msleep(SLEEP_TIME_MS);
 	}
 	return 0;
+	#endif
 }

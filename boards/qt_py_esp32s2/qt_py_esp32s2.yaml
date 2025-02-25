@@ -1,0 +1,23 @@
+identifier: qt_py_esp32s2
+name: Adafruit QT Py ESP32-S2
+type: mcu
+arch: xtensa
+toolchain:
+  - zephyr
+supported:
+  - adc
+  - dac
+  - gpio
+  - i2c
+  - watchdog
+  - uart
+  - nvs
+  - pwm
+  - dma
+  - spi
+  - can
+  - i2s
+  - counter
+  - entropy
+  - input
+vendor: adafruit
